@@ -7,9 +7,8 @@ function Home() {
             <p className="subtitle">
                 Explore a diverse catalog of inventory items!
             </p>
-
-            <h3>About WebQRtalog</h3>
             <div className="about">
+                <h3>About WebQRtalog</h3>
                 <p>
                     WebQRtalog is your go-to platform for managing and exploring
                     inventory items. Whether you&apos;re tracking assets or
@@ -30,7 +29,9 @@ function Home() {
                     functionality.
                 </p>
             </div>
-            <Link to="/login">Login</Link>
+            <Link to="/login" className="loginLink">
+                Login
+            </Link>
         </div>
     )
 }
