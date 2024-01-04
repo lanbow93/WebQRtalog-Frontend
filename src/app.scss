@@ -3,6 +3,13 @@ $color-start: #1877f2;
 $color-end: #003366;
 $background-gradient: linear-gradient(to bottom, $color-end, $color-start);
 
+$shadow-color: rgba(0, 0, 0, 0.2);
+$shadow-offset-x: 0;
+$shadow-offset-y: 4px;
+$shadow-blur: 8px;
+$shadow-spread: 2px;
+
+
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +45,9 @@ $background-gradient: linear-gradient(to bottom, $color-end, $color-start);
     color: white;
     font-family: $fancy-font;
     letter-spacing: 1px;
+    border-radius: 0 0 .5rem .5rem;
+    box-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread $shadow-color;
+
     .heading {
         text-decoration: none;
         color: inherit;
