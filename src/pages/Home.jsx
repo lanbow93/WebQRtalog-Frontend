@@ -12,8 +12,9 @@ function Home() {
             <div className="about">
                 <p>
                     WebQRtalog is your go-to platform for managing and exploring
-                    inventory items. Whether you&apos;re tracking assets or managing
-                    equipment, our platform provides a seamless experience.
+                    inventory items. Whether you&apos;re tracking assets or
+                    managing equipment, our platform provides a seamless
+                    experience.
                 </p>
                 <p>
                     Our mission is to simplify inventory management and enhance

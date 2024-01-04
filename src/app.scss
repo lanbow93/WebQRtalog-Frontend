@@ -38,12 +38,12 @@ $background-gradient: linear-gradient(to bottom, $color-end, $color-start);
     color: white;
     font-family: $fancy-font;
     letter-spacing: 1px;
-    .heading{
+    .heading {
         text-decoration: none;
         color: inherit;
         h1 {
-        text-align: center;
-        padding: 0.5rem;
+            text-align: center;
+            padding: 0.5rem;
         }
     }
 

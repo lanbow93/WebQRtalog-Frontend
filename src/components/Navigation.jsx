@@ -11,7 +11,9 @@ const Navigation = () => {
 
     return (
         <nav className="navigation">
-            <Link to="/" className='heading'><h1>WebQRtalog</h1></Link>
+            <Link to="/" className="heading">
+                <h1>WebQRtalog</h1>
+            </Link>
             <div
                 className={`container ${menuOpen ? 'change' : ''}`}
                 onClick={handleMenuToggle}
