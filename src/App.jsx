@@ -1,5 +1,5 @@
 import './app.scss'
-import sitePreview from './assets/WebQRtalog.png'
+import sitePreview from '../public/WebQRtalog.png'
 import { Outlet } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import { Helmet } from 'react-helmet'

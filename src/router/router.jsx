@@ -9,6 +9,7 @@ import Loading from '../components/Loading'
 import Login from '../pages/Login'
 import Landing from '../pages/Landing'
 import Home from '../pages/Home'
+import Inventory from '../pages/Inventory'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
             <Route path="/" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/inventory" element={<Inventory />} />
             <Route path="/loading" element={<Loading />} />
         </Route>
     )
