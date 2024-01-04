@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import LoadingScreen from '../components/Loading.jsx'
 import HiddenModal from '../components/HiddenModal.jsx'
-import { Link } from 'react-router-dom'
 import { assetsCall } from '../utils/apiCalls'
-import { capitalizeWords } from '../utils/SharedFunctions.js'
+import CatalogLine from '../components/CatalogLine.jsx'
 
 function Catalog() {
     const [isLoading, setIsLoading] = useState(false)
@@ -39,21 +38,6 @@ function Catalog() {
     if (isLoading || assetData.length === 0) {
         return <LoadingScreen />
     }
-    const renderAssetLines = () => {
-        return assetData.map((asset, index) => (
-            <div
-                key={index}
-                className={`line ${index % 2 === 0 ? 'even' : 'odd'}`}
-            >
-                <p>{capitalizeWords(asset.productName)}</p>
-                <p>{asset.currentAssignee}</p>
-                <p className="desktopView">{asset.category}</p>
-                <Link to={`/inventory/catalog/${asset._id}`}>
-                    <button>✓</button>
-                </Link>
-            </div>
-        ))
-    }
     return (
         <div className="catalog">
             <div className={`modalSection ${isModalActive ? '' : 'hidden'}`}>
@@ -72,7 +56,13 @@ function Catalog() {
                     <p className="desktopView">Category</p>
                     <p>More Details</p>
                 </div>
-                {renderAssetLines()}
+                {assetData.map((asset, index) => (
+                    <CatalogLine
+                        {...asset}
+                        index={index}
+                        key={asset.productName + index}
+                    />
+                ))}
                 <div className="line ending"></div>
             </div>
         </div>
