@@ -11,7 +11,11 @@ function Home() {
 
     return (
         <div className="home">
-            <h1>Welcome {badgeName}</h1>
+            <h1>
+                Welcome,
+                <br />
+                {badgeName}
+            </h1>
             <h3>Login Renewal:</h3>
             <p>
                 {dateConverter(
