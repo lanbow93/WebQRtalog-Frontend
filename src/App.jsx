@@ -1,38 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './app.scss'
+import sitePreview from './assets/WebQRtalog.png'
+import { Outlet } from 'react-router-dom'
+import Navigation from './components/Navigation'
+import { Helmet } from 'react-helmet'
 
 function App() {
-    const [count, setCount] = useState(0)
-
     return (
-        <>
-            <div>
-                <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev" target="_blank" rel="noreferrer">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </>
+        <div className="App">
+            <Helmet>
+                <title>WebQRtalog - Inventory Management System</title>
+                <meta
+                    name="description"
+                    content="WebQRtalog is an inventory management system that allows you to track and manage products efficiently. Explore the catalog of items with detailed information and QR codes for easy identification."
+                />
+                <meta
+                    property="og:title"
+                    content="WebQRtalog - Inventory Management System"
+                />
+                <meta
+                    property="og:description"
+                    content="WebQRtalog is an inventory management system that allows you to track and manage products efficiently. Explore the catalog of items with detailed information and QR codes for easy identification."
+                />
+                <meta property="og:image" content={sitePreview} />
+            </Helmet>
+            <Navigation />
+            <Outlet />
+        </div>
     )
 }
 

@@ -1,0 +1,19 @@
+$fancy-font: 'Agbalumo', sans-serif;
+$bgcolor: #232f3e;
+$bgOffset: #526070;
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+.underline {
+    text-decoration: underline;
+}
+.hidden {
+    display: none;
+}
