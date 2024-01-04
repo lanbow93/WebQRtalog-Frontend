@@ -24,7 +24,15 @@ function Login() {
         const response = await login(JSON.stringify(userData))
         setIsLoading(false)
         if (response.data) {
-            navigate('/homepage')
+            const qrUserDetails = {
+                badgeName: response.data.data,
+                timeStamp: new Date(),
+            }
+            sessionStorage.setItem(
+                'qrUserDetails',
+                JSON.stringify(qrUserDetails)
+            )
+            navigate('/home')
         } else {
             const { status, message, error } = response.error
             setmodalData({
@@ -32,6 +40,7 @@ function Login() {
                 message: message,
                 additional: error,
             })
+            sessionStorage.removeItem('qrUserDetails')
             setIsModalActive(true)
         }
     }
