@@ -10,3 +10,7 @@ export function dateConverter(date) {
         hour12: true,
     })
 }
+
+export function capitalizeWords(inputString) {
+    return inputString.replace(/\b\w/g, (match) => match.toUpperCase())
+}

@@ -292,10 +292,83 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         }
     }
 }
+
+.catalog {
+    padding: 1rem;
+    h1 {
+        text-align: center;
+    }
+    .assetsSection {
+        text-align: center;
+        margin-top: 1rem;
+        .line {
+            display: grid;
+            grid-template-columns: 1fr 1fr 0.65fr;
+            align-items: center;
+            justify-content: center;
+            padding: 0.1rem;
+            border-right: 1px black solid;
+            border-left: 1px black solid;
+        }
+        .heading {
+            background: $background-gradient;
+            border-radius: 1rem 1rem 0 0;
+            color: white;
+            font-weight: bold;
+        }
+        button {
+            padding: 0.25rem 1rem;
+            border-radius: 1rem;
+            background-color: rgba(128, 128, 128, 0.585);
+            color: white;
+            font-size: 1rem;
+        }
+        .even {
+            background-color: #b9d7ff;
+            p {
+                height: 100%;
+                border-right: 1px black solid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .odd {
+            p {
+                height: 100%;
+                border-right: 1px black solid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        .desktopView {
+            display: none !important;
+        }
+        .ending {
+            background: $background-gradient;
+            border-radius: 0 0 1rem 1rem;
+            height: 1rem;
+        }
+    }
+}
 @media screen and (min-width: 48rem) {
     .login {
         form {
             min-width: 30rem;
+        }
+    }
+    .catalog {
+        .assetsSection {
+            .line {
+                grid-template-columns: 1fr 1fr 1fr 0.65fr;
+                padding: 0.25rem;
+            }
+            .desktopView {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }
