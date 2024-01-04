@@ -2,6 +2,16 @@ $fancy-font: 'Helvetica', sans-serif;
 $color-end: #1877f2;
 $color-start: #003366;
 $background-gradient: linear-gradient(to bottom, $color-start, $color-end);
+$light-background-gradient: linear-gradient(
+    to bottom,
+    lighten($color-start, 10%),
+    lighten($color-end, 10%)
+);
+$dark-background-gradient: linear-gradient(
+    to bottom,
+    darken($color-start, 10%),
+    darken($color-end, 10%)
+);
 $card-background: #b0c4de;
 $card-text-color: #000080;
 $shadow-color: rgba(0, 0, 0, 0.2);
@@ -11,6 +21,25 @@ $shadow-blur: 8px;
 $shadow-spread: 2px;
 $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     $shadow-color;
+
+@mixin buttonStyles {
+    padding: 0.5rem 2rem;
+    background: $background-gradient;
+    color: white;
+    text-decoration: none;
+    border-radius: 1rem;
+    box-shadow: $standard-shadow;
+    font-size: 1.25rem;
+
+    &:hover,
+    &:focus {
+        background: $light-background-gradient;
+    }
+
+    &:active {
+        background: $dark-background-gradient;
+    }
+}
 
 * {
     margin: 0;
@@ -167,14 +196,10 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         }
     }
     .loginLink {
+        @include buttonStyles;
         align-self: center;
         margin-top: 2rem;
         padding: 1rem 3rem;
-        background: $background-gradient;
-        color: white;
-        text-decoration: none;
-        border-radius: 1rem;
-        box-shadow: $standard-shadow;
     }
 }
 
@@ -228,14 +253,25 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
             font-size: 1.25rem;
         }
         button {
+            @include buttonStyles;
             margin-top: 1rem;
-            padding: 0.5rem 2rem;
-            background: $background-gradient;
-            color: white;
-            text-decoration: none;
-            border-radius: 1rem;
-            box-shadow: $standard-shadow;
-            font-size: 1.25rem;
+        }
+    }
+}
+
+.home {
+    text-align: center;
+    padding-top: 2rem;
+    h1 {
+        margin-bottom: 1rem;
+    }
+    p {
+        margin-bottom: 1rem;
+    }
+    .buttonOptions {
+        button {
+            @include buttonStyles;
+            margin: 1rem;
         }
     }
 }
