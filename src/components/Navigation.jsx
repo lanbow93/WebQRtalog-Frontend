@@ -1,11 +1,9 @@
-import React from 'react';
-
 function Navigation() {
-  return (
-    <div className='navigation'>
-      <h1>Navigation</h1>
-    </div>
-  );
+    return (
+        <div className="navigation">
+            <h1>Navigation</h1>
+        </div>
+    )
 }
 
-export default Navigation;
+export default Navigation

@@ -6,6 +6,7 @@ $bgOffset: #526070;
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'Helvetica', sans-serif;
 }
 
 .bold {
@@ -16,4 +17,22 @@ $bgOffset: #526070;
 }
 .hidden {
     display: none;
+}
+
+.loadingScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    img {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 48rem) {
+    .loadingScreen {
+    }
 }
