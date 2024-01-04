@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { inventoryButtons } from '../utils/jsonDetails.json'
 import useCheckUserSession from '../utils/useCheckUserSession'
 function Inventory() {
-    useCheckUserSession();
+    useCheckUserSession()
     return (
         <div className="inventory">
             <h1>Inventory</h1>

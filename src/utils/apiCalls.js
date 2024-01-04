@@ -20,3 +20,22 @@ export async function login(userData) {
         return { error }
     }
 }
+
+export async function assetsCall() {
+    try {
+        const response = await fetch(url + '/inventory/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}

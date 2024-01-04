@@ -276,17 +276,17 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     }
 }
 
-.inventory{
+.inventory {
     text-align: center;
     padding: 1rem;
-    h1{
+    h1 {
         margin-bottom: 2rem;
     }
-    p{
+    p {
         margin-bottom: 1rem;
     }
-    .buttonOptions{
-        button{
+    .buttonOptions {
+        button {
             @include buttonStyles();
             margin: 1rem;
         }

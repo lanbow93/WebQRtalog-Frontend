@@ -7,7 +7,7 @@ import { login } from '../utils/apiCalls.js'
 function Login() {
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
-    const [modalData, setmodalData] = useState({
+    const [modalData, setModalData] = useState({
         status: '',
         message: '',
         additional: '',
@@ -35,7 +35,7 @@ function Login() {
             navigate('/home')
         } else {
             const { status, message, error } = response.error
-            setmodalData({
+            setModalData({
                 status: status,
                 message: message,
                 additional: error,

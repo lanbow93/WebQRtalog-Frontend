@@ -10,6 +10,7 @@ import Login from '../pages/Login'
 import Landing from '../pages/Landing'
 import Home from '../pages/Home'
 import Inventory from '../pages/Inventory'
+import Catalog from '../pages/Catalog'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/inventory" element={<Inventory />} />
+            <Route path="/inventory/catalog" element={<Catalog />} />
             <Route path="/loading" element={<Loading />} />
         </Route>
     )
