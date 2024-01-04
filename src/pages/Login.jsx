@@ -32,7 +32,6 @@ function Login() {
                 message: message,
                 additional: error,
             })
-            console.log(response.error)
             setIsModalActive(true)
         }
     }
@@ -57,7 +56,6 @@ function Login() {
                         message={modalData.message}
                         error={modalData.additional}
                         closeModal={setIsModalActive}
-                        confirmFunction={console.log}
                     />
                 </div>
 

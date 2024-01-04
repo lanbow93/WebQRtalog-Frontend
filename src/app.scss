@@ -138,7 +138,7 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     }
 }
 
-.home {
+.landing {
     display: flex;
     flex-direction: column;
     h1 {
@@ -206,7 +206,44 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     }
 }
 .login {
+    display: flex;
+    justify-content: center;
+    form {
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $card-background;
+        display: grid;
+        min-width: 20rem;
+        box-shadow: $standard-shadow;
+
+        h2 {
+            text-align: center;
+        }
+        label {
+            margin-bottom: 0.5rem;
+        }
+        input {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem 2rem;
+            background: $background-gradient;
+            color: white;
+            text-decoration: none;
+            border-radius: 1rem;
+            box-shadow: $standard-shadow;
+            font-size: 1.25rem;
+        }
+    }
 }
 
 @media screen and (min-width: 48rem) {
+    .login {
+        form {
+            min-width: 30rem;
+        }
+    }
 }

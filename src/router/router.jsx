@@ -7,13 +7,13 @@ import {
 import App from '../App'
 import Loading from '../components/Loading'
 import Login from '../pages/Login'
-import Home from '../pages/Home'
+import Landing from '../pages/Landing'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
-            <Route path="/" element={<Home />} />
-            <Route path="login" element={<Login />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/loading" element={<Loading />} />
         </Route>
     )

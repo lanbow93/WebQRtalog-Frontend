@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-function Home() {
+function Landing() {
     return (
-        <div className="home">
+        <div className="landing">
             <h1>Welcome to WebQRtalog</h1>
             <p className="subtitle">
                 Explore a diverse catalog of inventory items!
@@ -36,4 +36,4 @@ function Home() {
     )
 }
 
-export default Home
+export default Landing
