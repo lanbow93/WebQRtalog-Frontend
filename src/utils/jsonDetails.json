@@ -3,6 +3,10 @@
         ["Home", "/home"],
         ["Login", "/login"],
         ["Assign", "/assign"],
-        ["Review", "/review"]
+        ["Inventory", "/inventory"]
+    ],
+    "homeButtons": [
+        ["Assign Equipment", "/assign"],
+        ["Review Inventory", "/inventory"]
     ]
 }
