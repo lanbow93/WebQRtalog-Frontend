@@ -276,6 +276,22 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     }
 }
 
+.inventory{
+    text-align: center;
+    padding: 1rem;
+    h1{
+        margin-bottom: 2rem;
+    }
+    p{
+        margin-bottom: 1rem;
+    }
+    .buttonOptions{
+        button{
+            @include buttonStyles();
+            margin: 1rem;
+        }
+    }
+}
 @media screen and (min-width: 48rem) {
     .login {
         form {

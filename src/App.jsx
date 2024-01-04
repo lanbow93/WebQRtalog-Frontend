@@ -1,5 +1,4 @@
 import './app.scss'
-import sitePreview from '../public/WebQRtalog.png'
 import { Outlet } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import { Helmet } from 'react-helmet'
@@ -21,7 +20,7 @@ function App() {
                     property="og:description"
                     content="WebQRtalog is an inventory management system that allows you to track and manage products efficiently. Explore the catalog of items with detailed information and QR codes for easy identification."
                 />
-                <meta property="og:image" content={sitePreview} />
+                <meta property="og:image" content="/WebQRtalog.png?url" />
             </Helmet>
             <Navigation />
             <Outlet />

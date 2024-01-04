@@ -8,5 +8,10 @@
     "homeButtons": [
         ["Assign Equipment", "/assign"],
         ["Review Inventory", "/inventory"]
+    ],
+    "inventoryButtons": [
+        ["Add New Asset", "/inventory/add"],
+        ["Search Menu", "/inventory/search"],
+        ["Full Catalog", "/inventory/catalog"]
     ]
 }
