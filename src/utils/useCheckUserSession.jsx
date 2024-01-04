@@ -27,6 +27,7 @@ const useCheckUserSession = () => {
             navigate('/session-expired')
         }
     }, [navigate])
+
     return null
 }
 

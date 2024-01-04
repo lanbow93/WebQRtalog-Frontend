@@ -6,8 +6,12 @@ import { homeButtons } from '../utils/jsonDetails.json'
 function Home() {
     useCheckUserSession()
     const storedUserDetails = sessionStorage.getItem('qrUserDetails')
-    const userDetails = JSON.parse(storedUserDetails)
-    const { badgeName, timeStamp } = userDetails
+    let badgeName, timeStamp
+    if (storedUserDetails) {
+        const userDetails = JSON.parse(storedUserDetails)
+        badgeName = userDetails.badgeName
+        timeStamp = userDetails.timeStamp
+    }
 
     return (
         <div className="home">
