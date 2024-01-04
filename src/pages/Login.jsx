@@ -42,6 +42,10 @@ function Login() {
         setUserData({ ...userData, [name]: value })
     }
 
+    if (isLoading) {
+        return <LoadingScreen />
+    }
+
     return (
         <>
             <div className="login">
@@ -53,35 +57,32 @@ function Login() {
                         message={modalData.message}
                         error={modalData.additional}
                         closeModal={setIsModalActive}
+                        confirmFunction={console.log}
                     />
                 </div>
 
-                {isLoading ? (
-                    <LoadingScreen />
-                ) : (
-                    <form onSubmit={handleSubmission}>
-                        <h2>Admin Login</h2>
-                        <label>Username:</label>
-                        <input
-                            required
-                            type="text"
-                            name="username"
-                            value={userData.username}
-                            onChange={handleInputChange}
-                        />
-                        <label>Password:</label>
-                        <input
-                            required
-                            type="password"
-                            name="password"
-                            value={userData.password}
-                            onChange={handleInputChange}
-                        />
-                        <button type="submit" className="activated">
-                            Submit
-                        </button>
-                    </form>
-                )}
+                <form onSubmit={handleSubmission}>
+                    <h2>Login</h2>
+                    <label>Username:</label>
+                    <input
+                        required
+                        type="text"
+                        name="username"
+                        value={userData.username}
+                        onChange={handleInputChange}
+                    />
+                    <label>Password:</label>
+                    <input
+                        required
+                        type="password"
+                        name="password"
+                        value={userData.password}
+                        onChange={handleInputChange}
+                    />
+                    <button type="submit" className="activated">
+                        Submit
+                    </button>
+                </form>
             </div>
         </>
     )
