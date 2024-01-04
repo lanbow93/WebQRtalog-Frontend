@@ -1,0 +1,8 @@
+{
+    "navLinks": [
+        ["Home", "/"],
+        ["Login", "/login"],
+        ["Assign", "/assign"],
+        ["Review", "/review"]
+    ]
+}

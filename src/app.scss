@@ -1,6 +1,7 @@
-$fancy-font: 'Agbalumo', sans-serif;
-$bgcolor: #232f3e;
-$bgOffset: #526070;
+$fancy-font: 'Helvetica', sans-serif;
+$color-start: #1877f2;
+$color-end: #003366;
+$background-gradient: linear-gradient(to bottom, $color-end, $color-start);
 
 * {
     margin: 0;
@@ -32,7 +33,97 @@ $bgOffset: #526070;
     }
 }
 
-@media screen and (min-width: 48rem) {
-    .loadingScreen {
+.navigation {
+    background: $background-gradient;
+    color: white;
+    font-family: $fancy-font;
+    letter-spacing: 1px;
+    .heading{
+        text-decoration: none;
+        color: inherit;
+        h1 {
+        text-align: center;
+        padding: 0.5rem;
+        }
     }
+
+    .container {
+        cursor: pointer;
+        position: absolute;
+        top: 0.2rem;
+        right: 1rem;
+
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 1s;
+        }
+
+        &.change {
+            .bar1 {
+                transform: translate(0, 11px) rotate(-45deg);
+            }
+            .bar2 {
+                opacity: 0;
+            }
+            .bar3 {
+                transform: translate(0, -11px) rotate(45deg);
+            }
+        }
+    }
+    .closed {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s ease-out;
+    }
+    .open {
+        max-height: 200px;
+        transition: max-height 1s ease-in;
+    }
+
+    .navOptions {
+        ul {
+            display: flex;
+            justify-content: space-around;
+            list-style-type: none;
+            padding-bottom: 0.5rem;
+            padding-top: 0.5rem;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            overflow: hidden;
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0.1em;
+                background-color: white;
+                opacity: 0;
+                transition:
+                    width 300ms,
+                    opacity 300ms,
+                    transform 1000ms;
+                transform: translateX(-50%);
+            }
+
+            &:hover::after,
+            &:focus::after {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 48rem) {
 }

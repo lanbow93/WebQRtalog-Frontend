@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import HiddenModal from '../components/HiddenModal.jsx'
-import LoadingScreen from '../components/LoadingScreen.jsx'
+import LoadingScreen from '../components/Loading.jsx'
 import { login } from '../utils/apiCalls.js'
 
-function LoginPage() {
+function Login() {
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [modalData, setmodalData] = useState({
@@ -44,7 +44,7 @@ function LoginPage() {
 
     return (
         <>
-            <div className="loginPage">
+            <div className="login">
                 <div
                     className={`modalSection ${isModalActive ? '' : 'hidden'}`}
                 >
@@ -87,4 +87,4 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
+export default Login
