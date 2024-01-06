@@ -1,10 +1,14 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 import { singleAsset } from '../utils/apiCalls'
 import Loading from '../components/Loading.jsx'
 import HiddenModal from '../components/HiddenModal.jsx'
+import { capitalizeWords } from '../utils/SharedFunctions.js'
+import { assetButtons } from '../utils/jsonDetails.json'
+import useCheckUserSession from '../utils/useCheckUserSession.jsx'
 
 function Asset() {
+    useCheckUserSession()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [assetData, setAssetData] = useState()
@@ -14,16 +18,14 @@ function Asset() {
         additional: '',
     })
     const { id } = useParams()
-    useEffect(() => {
-        getAssetData()
-        return () => {}
-    }, [])
+
     const getAssetData = async () => {
         setIsLoading(true)
         const response = await singleAsset(id)
         setIsLoading(false)
         if (response.data) {
-            console.log(response.data)
+            setAssetData({ ...response.data.data })
+            console.log(assetData)
         } else {
             const { status, message, error } = response.error
             setModalData({
@@ -35,12 +37,63 @@ function Asset() {
         }
     }
 
-    if (isLoading) {
+    useEffect(() => {
+        getAssetData()
+        return () => {}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    if (isLoading | !assetData) {
         return <Loading />
     }
     return (
         <div className="asset">
-            <h1>Asset</h1>
+            <div className={`modalSection ${isModalActive ? '' : 'hidden'}`}>
+                <HiddenModal
+                    status={modalData.status}
+                    message={modalData.message}
+                    error={modalData.additional}
+                    closeModal={setIsModalActive}
+                />
+            </div>
+            <h1>{capitalizeWords(assetData.productName)}</h1>
+            <div className="qrCode">
+                <img
+                    className="qrImage"
+                    src="/QRlogo.png"
+                    alt={`Generated QR: ${assetData.qrCode}`}
+                />
+                {assetData.barcode === '' ? (
+                    <img
+                        className="qrImage"
+                        src="/noBarcode.png"
+                        alt={`Stored Barcode: ${assetData.barcode}`}
+                    />
+                ) : (
+                    ''
+                )}
+            </div>
+            <div className="moreDetails">
+                <section>
+                    <label>Category:</label>
+                    <p>{capitalizeWords(assetData.category)}</p>
+                </section>
+                <section>
+                    <label>Serial:</label>
+                    <p>{assetData.serialNumber.toUpperCase()}</p>
+                </section>
+                <section className="assignee">
+                    <label>Current Assignee:</label>
+                    <p>{assetData.currentAssignee}</p>
+                </section>
+            </div>
+            <div className="buttonOptions">
+                {assetButtons.map((option) => (
+                    <Link to={option[1] + id} key={option[1] + option[2]}>
+                        <button>{option[0]}</button>
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }

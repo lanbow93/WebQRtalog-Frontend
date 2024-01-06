@@ -1,6 +1,5 @@
 export function dateConverter(date) {
     const postedDate = new Date(date)
-
     return postedDate.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',

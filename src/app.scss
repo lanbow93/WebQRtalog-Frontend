@@ -352,6 +352,52 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         }
     }
 }
+
+.asset {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        text-align: center;
+    }
+    .qrCode {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        .qrImage {
+            max-width: 15rem; /* Add this to ensure the image fills the container */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: contain;
+        }
+    }
+    .moreDetails {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        section {
+            display: flex;
+            justify-content: center;
+            label {
+                font-weight: bold;
+                margin-right: 0.5rem;
+            }
+        }
+        .assignee {
+            grid-column: span 2;
+        }
+    }
+    .buttonOptions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        button {
+            @include buttonStyles();
+            margin: 1rem;
+        }
+    }
+}
 @media screen and (min-width: 48rem) {
     .login {
         form {

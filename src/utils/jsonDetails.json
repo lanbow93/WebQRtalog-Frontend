@@ -13,5 +13,10 @@
         ["Add New Asset", "/inventory/add"],
         ["Search Menu", "/inventory/search"],
         ["Full Catalog", "/inventory/catalog"]
+    ],
+    "assetButtons": [
+        ["Assign", "/assign/"],
+        ["Edit", "/inventory/edit/"],
+        ["History", "/inventory/assetchain/"]
     ]
 }

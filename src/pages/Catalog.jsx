@@ -3,8 +3,10 @@ import LoadingScreen from '../components/Loading.jsx'
 import HiddenModal from '../components/HiddenModal.jsx'
 import { assetsCall } from '../utils/apiCalls'
 import CatalogLine from '../components/CatalogLine.jsx'
+import useCheckUserSession from '../utils/useCheckUserSession.jsx'
 
 function Catalog() {
+    useCheckUserSession()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [assetData, setAssetData] = useState([])
@@ -14,7 +16,6 @@ function Catalog() {
         additional: '',
     })
     const [sortOrder, setSortOrder] = useState('asc') // or 'desc' for descending
-    const [sortKey, setSortKey] = useState('productName') // default sorting key
 
     useEffect(() => {
         getAssets()
@@ -42,7 +43,6 @@ function Catalog() {
         // Toggle between ascending and descending order
         const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc'
         setSortOrder(newSortOrder)
-        setSortKey(key)
 
         // Sort the assetData array based on the selected key and order
         const sortedData = assetData.slice().sort((a, b) => {
