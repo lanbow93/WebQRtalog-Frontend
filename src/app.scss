@@ -428,6 +428,9 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         select {
             margin: 0.25rem;
         }
+        input{
+            padding-left: .25rem;
+        }
         button {
             grid-column: span 2;
             margin: 0.5rem 0;
@@ -469,6 +472,10 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         input,
         select {
             margin: 0.25rem;
+           
+        }
+        input{
+            padding-left: .25rem;
         }
         button {
             grid-column: span 2;
