@@ -26,7 +26,6 @@ function Asset() {
         setIsLoading(false)
         if (response.data) {
             setAssetData({ ...response.data.data })
-            console.log(assetData)
         } else {
             const { status, message, error } = response.error
             setModalData({
