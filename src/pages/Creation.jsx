@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { createAsset } from '../utils/apiCalls'
 import LoadingScreen from '../components/Loading'
 import useCheckUserSession from '../utils/useCheckUserSession'
@@ -21,16 +21,19 @@ function Creation() {
         message: '',
         additional: '',
     })
+
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setAssetData({ ...assetData, [name]: value })
     }
+
     const handleSubmission = async (event) => {
         event.preventDefault()
         setIsLoading(true)
 
         const response = await createAsset(assetData)
         setIsLoading(false)
+
         if (response.data) {
             navigate(`/inventory/catalog/${response.data.data.newItem._id}`)
         } else {
@@ -52,6 +55,7 @@ function Creation() {
     if (isLoading) {
         return <LoadingScreen />
     }
+
     return (
         <div className="creation">
             <div className={`modalSection ${isModalActive ? '' : 'hidden'}`}>
@@ -73,13 +77,32 @@ function Creation() {
                     onChange={handleInputChange}
                 />
                 <label>Category:</label>
-                <input
+                <select
                     required
-                    type="text"
                     name="category"
                     value={assetData.category}
                     onChange={handleInputChange}
-                />
+                >
+                    <option value="" disabled>
+                        Select a category
+                    </option>
+                    <option value="Option1">Option 1</option>
+                    <option value="Option2">Option 2</option>
+                    <option value="Other">Other</option>
+                </select>
+                {assetData.category === 'Other' && (
+                    <>
+                        <label>Enter Category:</label>
+                        <input
+                            required
+                            type="text"
+                            name="other"
+                            placeholder="Enter other category"
+                            value={assetData.other}
+                            onChange={handleInputChange}
+                        />
+                    </>
+                )}
                 <label>Quantity:</label>
                 <input
                     required
@@ -97,6 +120,7 @@ function Creation() {
                     onChange={handleInputChange}
                 />
                 <button>Create</button>
+                <div className="ending"></div>
             </form>
         </div>
     )

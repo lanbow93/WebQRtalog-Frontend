@@ -6,6 +6,7 @@ import HiddenModal from '../components/HiddenModal.jsx'
 import { capitalizeWords } from '../utils/SharedFunctions.js'
 import { assetButtons } from '../utils/jsonDetails.json'
 import useCheckUserSession from '../utils/useCheckUserSession.jsx'
+import QRCode from 'react-qr-code'
 
 function Asset() {
     useCheckUserSession()
@@ -58,12 +59,8 @@ function Asset() {
             </div>
             <h1>{capitalizeWords(assetData.productName)}</h1>
             <div className="qrCode">
-                <img
-                    className="qrImage"
-                    src="/QRlogo.png"
-                    alt={`Generated QR: ${assetData.qrCode}`}
-                />
-                {assetData.barcode === '' ? (
+                <QRCode value={assetData.qrCode} className="qrImage" />
+                {/* {assetData.barcode === '' ? (
                     <img
                         className="qrImage"
                         src="/noBarcode.png"
@@ -71,7 +68,7 @@ function Asset() {
                     />
                 ) : (
                     ''
-                )}
+                )} */}
             </div>
             <div className="moreDetails">
                 <section>

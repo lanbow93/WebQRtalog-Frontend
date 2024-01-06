@@ -13,6 +13,7 @@ import Inventory from '../pages/Inventory'
 import Catalog from '../pages/Catalog'
 import Asset from '../pages/Asset'
 import Creation from '../pages/Creation'
+import Edit from '../pages/Edit'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
             <Route path="/home" element={<Home />} />
             <Route path="/inventory" element={<Inventory />} />
             <Route path="/inventory/add" element={<Creation />} />
+            <Route path="/inventory/edit/:id" element={<Edit />} />
             <Route path="/inventory/catalog" element={<Catalog />} />
             <Route path="/inventory/catalog/:id" element={<Asset />} />
             <Route path="/loading" element={<Loading />} />
