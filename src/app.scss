@@ -491,6 +491,23 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         }
     }
 }
+
+.assign{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+        margin: 1rem;
+    }
+    P{
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+    .scanner{
+        width: 100%;
+        max-width: 30rem;
+    }
+}
 @media screen and (min-width: 48rem) {
     .login {
         form {

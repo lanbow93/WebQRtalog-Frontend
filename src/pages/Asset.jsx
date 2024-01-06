@@ -58,7 +58,7 @@ function Asset() {
             </div>
             <h1>{capitalizeWords(assetData.productName)}</h1>
             <div className="qrCode">
-                <QRCode value={assetData.qrCode} className="qrImage" />
+                <QRCode value={JSON.stringify({qr: assetData.qrCode, id: assetData._id})} className="qrImage" />
                 {/* {assetData.barcode === '' ? (
                     <img
                         className="qrImage"

@@ -15,12 +15,14 @@ function Assign(){
     }
     
     return <div className="assign">
-        <h1>Assign</h1>
+
+        <h1>Assign By QR</h1>
+        <p>Please Scan Item</p>
         <QrReader
         onResult={(result, error) => handleScan(result, error)}
-        
+        className='scanner'
       />
-      <p>{data}</p>
+      
     </div>
 }
 
