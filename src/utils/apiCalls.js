@@ -58,3 +58,23 @@ export async function singleAsset(id) {
         return { error }
     }
 }
+
+export async function createAsset(assetData) {
+    try {
+        const response = await fetch(url + '/inventory', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(assetData),
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}
