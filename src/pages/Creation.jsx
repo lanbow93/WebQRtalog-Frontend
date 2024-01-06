@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { createAsset } from '../utils/apiCalls'
+import { createAsset, getCategories } from '../utils/apiCalls'
 import LoadingScreen from '../components/Loading'
 import useCheckUserSession from '../utils/useCheckUserSession'
 import HiddenModal from '../components/HiddenModal'
+import { useEffect } from 'react'
 
 function Creation() {
     useCheckUserSession()
@@ -16,11 +17,33 @@ function Creation() {
         quantity: 1,
         serialNumber: '',
     })
+    const [categories, setCategories] = useState([])
     const [modalData, setModalData] = useState({
         status: '',
         message: '',
         additional: '',
     })
+
+    const retrieveCategories = async () => {
+        setIsLoading(true)
+        const response = await getCategories()
+        setIsLoading(false)
+        if (response.data) {
+            await setCategories(response.data.data)
+        } else {
+            const { status, message, error } = response.error
+            setModalData({
+                status: status,
+                message: message,
+                additional: error,
+            })
+            setIsModalActive(true)
+        }
+    }
+    useEffect(() => {
+        retrieveCategories()
+        return () => {}
+    }, [])
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -30,8 +53,12 @@ function Creation() {
     const handleSubmission = async (event) => {
         event.preventDefault()
         setIsLoading(true)
+        const dataToSubmit = { ...assetData }
+        if (assetData.other) {
+            dataToSubmit.category = assetData.other
+        }
+        const response = await createAsset(dataToSubmit)
 
-        const response = await createAsset(assetData)
         setIsLoading(false)
 
         if (response.data) {
@@ -52,7 +79,7 @@ function Creation() {
             setIsModalActive(true)
         }
     }
-    if (isLoading) {
+    if (isLoading || categories.length === 0) {
         return <LoadingScreen />
     }
 
@@ -73,7 +100,7 @@ function Creation() {
                     required
                     type="text"
                     name="productName"
-                    value={assetData.name}
+                    value={assetData.productName}
                     onChange={handleInputChange}
                 />
                 <label>Category:</label>
@@ -86,8 +113,11 @@ function Creation() {
                     <option value="" disabled>
                         Select a category
                     </option>
-                    <option value="Option1">Option 1</option>
-                    <option value="Option2">Option 2</option>
+                    {categories.map((category, index) => (
+                        <option value={category} key={category + index}>
+                            {category}
+                        </option>
+                    ))}
                     <option value="Other">Other</option>
                 </select>
                 {assetData.category === 'Other' && (
