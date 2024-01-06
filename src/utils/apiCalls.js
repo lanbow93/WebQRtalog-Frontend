@@ -39,3 +39,22 @@ export async function assetsCall() {
         return { error }
     }
 }
+
+export async function singleAsset(id) {
+    try {
+        const response = await fetch(url + `/inventory/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}

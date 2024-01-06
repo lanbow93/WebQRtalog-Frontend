@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { capitalizeWords } from '../utils/SharedFunctions'
 function CatalogLine(props) {
-    console.log(props)
     return (
         <div className={`line ${props.index % 2 === 0 ? 'even' : 'odd'}`}>
             <p>{capitalizeWords(props.productName)}</p>

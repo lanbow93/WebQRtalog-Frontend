@@ -13,6 +13,8 @@ function Catalog() {
         message: '',
         additional: '',
     })
+    const [sortOrder, setSortOrder] = useState('asc') // or 'desc' for descending
+    const [sortKey, setSortKey] = useState('productName') // default sorting key
 
     useEffect(() => {
         getAssets()
@@ -35,9 +37,34 @@ function Catalog() {
             setIsModalActive(true)
         }
     }
+
+    const handleSort = (key) => {
+        // Toggle between ascending and descending order
+        const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc'
+        setSortOrder(newSortOrder)
+        setSortKey(key)
+
+        // Sort the assetData array based on the selected key and order
+        const sortedData = assetData.slice().sort((a, b) => {
+            const valueA = a[key]
+            const valueB = b[key]
+
+            if (valueA < valueB) {
+                return sortOrder === 'asc' ? -1 : 1
+            }
+            if (valueA > valueB) {
+                return sortOrder === 'asc' ? 1 : -1
+            }
+            return 0
+        })
+
+        setAssetData(sortedData)
+    }
+
     if (isLoading || assetData.length === 0) {
         return <LoadingScreen />
     }
+
     return (
         <div className="catalog">
             <div className={`modalSection ${isModalActive ? '' : 'hidden'}`}>
@@ -51,9 +78,18 @@ function Catalog() {
             <h1>Catalog</h1>
             <div className="assetsSection">
                 <div className="line heading">
-                    <p>Product Name</p>
-                    <p>Current Assignee</p>
-                    <p className="desktopView">Category</p>
+                    <p onClick={() => handleSort('productName')}>
+                        Product Name
+                    </p>
+                    <p onClick={() => handleSort('currentAssignee')}>
+                        Current Assignee
+                    </p>
+                    <p
+                        className="desktopView"
+                        onClick={() => handleSort('category')}
+                    >
+                        Category
+                    </p>
                     <p>More Details</p>
                 </div>
                 {assetData.map((asset, index) => (
