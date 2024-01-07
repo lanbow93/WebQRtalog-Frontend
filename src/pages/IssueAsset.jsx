@@ -4,11 +4,10 @@ import { singleAsset } from '../utils/apiCalls'
 import Loading from '../components/Loading.jsx'
 import HiddenModal from '../components/HiddenModal.jsx'
 import { capitalizeWords } from '../utils/SharedFunctions.js'
-import { assetButtons } from '../utils/jsonDetails.json'
 import useCheckUserSession from '../utils/useCheckUserSession.jsx'
 import QRCode from 'react-qr-code'
 
-function Asset() {
+function IssueAsset() {
     useCheckUserSession()
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
@@ -62,15 +61,6 @@ function Asset() {
                     value={assetData.qrCode + '+++' + assetData._id}
                     className="qrImage"
                 />
-                {/* {assetData.barcode === '' ? (
-                    <img
-                        className="qrImage"
-                        src="/noBarcode.png"
-                        alt={`Stored Barcode: ${assetData.barcode}`}
-                    />
-                ) : (
-                    ''
-                )} */}
             </div>
             <div className="moreDetails">
                 <section>
@@ -86,15 +76,9 @@ function Asset() {
                     <p>{assetData.currentAssignee}</p>
                 </section>
             </div>
-            <div className="buttonOptions">
-                {assetButtons.map((option) => (
-                    <Link to={option[1] + id} key={option[1] + option[2]}>
-                        <button>{option[0]}</button>
-                    </Link>
-                ))}
-            </div>
+            <div className="buttonOptions"></div>
         </div>
     )
 }
 
-export default Asset
+export default IssueAsset

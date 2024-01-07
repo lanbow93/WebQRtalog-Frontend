@@ -428,8 +428,8 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         select {
             margin: 0.25rem;
         }
-        input{
-            padding-left: .25rem;
+        input {
+            padding-left: 0.25rem;
         }
         button {
             grid-column: span 2;
@@ -472,10 +472,9 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         input,
         select {
             margin: 0.25rem;
-           
         }
-        input{
-            padding-left: .25rem;
+        input {
+            padding-left: 0.25rem;
         }
         button {
             grid-column: span 2;
@@ -492,18 +491,18 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
     }
 }
 
-.assign{
+.assign {
     display: flex;
     flex-direction: column;
     align-items: center;
-    h1{
+    h1 {
         margin: 1rem;
     }
-    P{
+    P {
         margin-top: 1rem;
         font-weight: bold;
     }
-    .scanner{
+    .scanner {
         width: 100%;
         max-width: 30rem;
     }
