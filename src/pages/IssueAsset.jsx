@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { singleAsset } from '../utils/apiCalls'
+import { useParams, useNavigate } from 'react-router-dom'
+import { assignAsset, singleAsset } from '../utils/apiCalls'
 import Loading from '../components/Loading.jsx'
 import HiddenModal from '../components/HiddenModal.jsx'
 import { capitalizeWords } from '../utils/SharedFunctions.js'
@@ -9,15 +9,23 @@ import QRCode from 'react-qr-code'
 
 function IssueAsset() {
     useCheckUserSession()
+    const storedUserDetails = sessionStorage.getItem('qrUserDetails')
+    let badgeName
+    if (storedUserDetails) {
+        const userDetails = JSON.parse(storedUserDetails)
+        badgeName = userDetails.badgeName
+    }
     const [isLoading, setIsLoading] = useState(false)
     const [isModalActive, setIsModalActive] = useState(false)
     const [assetData, setAssetData] = useState()
+    const [assignee, setAssignee] = useState('')
     const [modalData, setModalData] = useState({
         status: '',
         message: '',
         additional: '',
     })
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const getAssetData = async () => {
         setIsLoading(true)
@@ -36,6 +44,38 @@ function IssueAsset() {
         }
     }
 
+    const handleSubmission = async (event) => {
+        event.preventDefault()
+        setIsLoading(true)
+
+        const dataToSubmit = {
+            badgeName: badgeName,
+            action: assignee ? 'Issued' : 'Returned',
+            possesor: assignee ? assignee : 'Asset Management',
+        }
+
+        const response = await assignAsset(id, dataToSubmit)
+        setIsLoading(false)
+
+        if (response.data) {
+            navigate(`/inventory/catalog/${assetData._id}`)
+        } else {
+            const { status, message, error } = response.error
+            setModalData({
+                status: status,
+                message: message,
+                additional: error,
+            })
+            setAssetData({
+                productName: '',
+                category: '',
+                quantity: 1,
+                serialNumber: '',
+            })
+            setIsModalActive(true)
+        }
+    }
+
     useEffect(() => {
         getAssetData()
         return () => {}
@@ -46,7 +86,7 @@ function IssueAsset() {
         return <Loading />
     }
     return (
-        <div className="asset">
+        <div className="issueAsset">
             <div className={`modalSection ${isModalActive ? '' : 'hidden'}`}>
                 <HiddenModal
                     status={modalData.status}
@@ -75,7 +115,26 @@ function IssueAsset() {
                     <label>Current Assignee:</label>
                     <p>{assetData.currentAssignee}</p>
                 </section>
+                {assetData.currentAssignee === 'Asset Management' ? (
+                    <>
+                        <form>
+                            <label className="bold" htmlFor="">
+                                New Assignee:{' '}
+                            </label>
+                            <input
+                                type="text"
+                                name="assignee"
+                                value={assignee}
+                                onChange={(e) => setAssignee(e.target.value)}
+                            />
+                        </form>
+                        <button onClick={handleSubmission}>Assign</button>
+                    </>
+                ) : (
+                    <button onClick={handleSubmission}>Return</button>
+                )}
             </div>
+
             <div className="buttonOptions"></div>
         </div>
     )

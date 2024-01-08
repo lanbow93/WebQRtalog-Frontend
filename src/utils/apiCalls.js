@@ -117,3 +117,23 @@ export async function updateAsset(assetData) {
         return { error }
     }
 }
+
+export async function assignAsset(id, assetData) {
+    try {
+        const response = await fetch(url + '/possession/' + id, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(assetData),
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}
