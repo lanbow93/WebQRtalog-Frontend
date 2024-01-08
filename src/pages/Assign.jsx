@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { QrReader } from 'react-qr-reader'
 import { useNavigate } from 'react-router'
+import useCheckUserSession from '../utils/useCheckUserSession'
 
 function Assign() {
+    useCheckUserSession()
     const [data, setData] = useState('')
     const navigate = useNavigate()
     if (data) {
