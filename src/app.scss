@@ -251,6 +251,7 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         input {
             margin-bottom: 0.5rem;
             font-size: 1.25rem;
+            padding-left: 0.25rem;
         }
         button {
             @include buttonStyles;
@@ -258,7 +259,35 @@ $standard-shadow: $shadow-offset-x $shadow-offset-y $shadow-blur $shadow-spread
         }
     }
 }
+.signup {
+    display: flex;
+    justify-content: center;
+    form {
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $card-background;
+        display: grid;
+        min-width: 20rem;
+        box-shadow: $standard-shadow;
 
+        h2 {
+            text-align: center;
+        }
+        label {
+            margin-bottom: 0.5rem;
+        }
+        input {
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+            font-size: 1.25rem;
+        }
+        button {
+            @include buttonStyles;
+            margin-top: 1rem;
+        }
+    }
+}
 .home {
     text-align: center;
     padding-top: 2rem;

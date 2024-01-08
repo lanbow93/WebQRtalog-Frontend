@@ -16,6 +16,7 @@ import Creation from '../pages/Creation'
 import Edit from '../pages/Edit'
 import Assign from '../pages/Assign'
 import IssueAsset from '../pages/IssueAsset'
+import Signup from '../pages/Signup'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
             <Route path="/inventory/edit/:id" element={<Edit />} />
             <Route path="/inventory/catalog" element={<Catalog />} />
             <Route path="/inventory/catalog/:id" element={<Asset />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="/loading" element={<Loading />} />
         </Route>
     )
