@@ -158,3 +158,22 @@ export async function assignAsset(id, assetData) {
         return { error }
     }
 }
+
+export async function viewChainHistory(id) {
+    try {
+        const response = await fetch(url + '/possession/' + id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+        if (response.ok) {
+            return { data: await response.json() }
+        } else {
+            return { error: await response.json() }
+        }
+    } catch (error) {
+        return { error }
+    }
+}

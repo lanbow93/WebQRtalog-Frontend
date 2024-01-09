@@ -17,6 +17,7 @@ import Edit from '../pages/Edit'
 import Assign from '../pages/Assign'
 import IssueAsset from '../pages/IssueAsset'
 import Signup from '../pages/Signup'
+import AssetChain from '../pages/AssetChain'
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
             <Route path="/inventory/edit/:id" element={<Edit />} />
             <Route path="/inventory/catalog" element={<Catalog />} />
             <Route path="/inventory/catalog/:id" element={<Asset />} />
+            <Route path="/inventory/assetchain/:id" element={<AssetChain />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/loading" element={<Loading />} />
         </Route>
