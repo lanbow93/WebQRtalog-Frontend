@@ -8,7 +8,8 @@ function Assign() {
     const [data, setData] = useState('')
     const navigate = useNavigate()
     if (data) {
-        navigate(`/assign/${data.split('+++')[1]}`)
+        console.log(data.split('https://webqrtalog.netlify.app'))
+        navigate(`${data.split('https://webqrtalog.netlify.app')[1]}`)
         setData('')
     }
     return (

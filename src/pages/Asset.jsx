@@ -59,7 +59,7 @@ function Asset() {
             <h1>{capitalizeWords(assetData.productName)}</h1>
             <div className="qrCode">
                 <QRCode
-                    value={assetData.qrCode + '+++' + assetData._id}
+                    value={'https://webqrtalog.netlify.app/inventory/catalog/' + assetData._id}
                     className="qrImage"
                 />
                 {/* {assetData.barcode === '' ? (
